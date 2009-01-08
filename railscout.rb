@@ -39,7 +39,7 @@ class RailsRequests < Scout::Plugin
                end
 
     Elif.foreach(@options["log"]) do |line|
-      if line =~ /\AActiveResource::ResourceNotFound (Failed with 404 Not Found)/
+      if line =~ /Failed with 404 Not Found/
         report[:report][:not_found_count] +=1
       elsif line =~ /\ACompleted in (\d+)ms .+ \[(\S+)\]\Z/        # newer Rails
         last_completed = [$1.to_i / 1000.0, $2]
